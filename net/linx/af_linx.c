@@ -996,7 +996,7 @@ static struct sk_buff *linx_alloc_send_pskb(struct sock *sk,
 					}
 
 					frag = &skb_shinfo(skb)->frags[i];
-					frag->page = page;
+					frag->page.p = page;
 					frag->page_offset = 0;
 					frag->size = (data_len >= PAGE_SIZE ?
 						      PAGE_SIZE : data_len);
@@ -1072,7 +1072,7 @@ static int linx_skb_store_bits(struct sk_buff *skb,
 			if (copy > len)
 				copy = len;
 
-			vaddr = kmap(frag->page);
+			vaddr = kmap(frag->page.p);
 			if (BUF_TYPE_USER(buffer_type)) {
 				err = copy_from_user(vaddr + frag->page_offset +
 						     offset - start, from,
@@ -1084,7 +1084,7 @@ static int linx_skb_store_bits(struct sk_buff *skb,
 				memcpy(vaddr + frag->page_offset +
 				       offset - start, from, copy);
 			}
-			kunmap(frag->page);
+			kunmap(frag->page.p);
 
 			if ((len -= copy) == 0)
 				return 0;

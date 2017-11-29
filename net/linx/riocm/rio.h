@@ -36,6 +36,7 @@
 #include <linux/netdevice.h>
 #include <linux/skbuff.h>
 #include <linux/linx_ioctl.h>
+#include <linux/interrupt.h>
 
 #include <rio_lock.h>
 

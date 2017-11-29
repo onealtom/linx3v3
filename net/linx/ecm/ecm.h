@@ -36,6 +36,7 @@
 #include <linux/linx_types.h>
 #include <linux/netdevice.h>
 #include <linux/skbuff.h>
+#include <linux/interrupt.h>
 
 #include <ecm_lock.h>
 

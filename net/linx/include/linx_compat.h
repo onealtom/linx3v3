@@ -35,6 +35,7 @@
 #define __LINX_COMPAT_H__
 
 #include <linux/version.h>
+#include <linux/export.h>
 #include <net/sock.h>
 
 #if(LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,9))
